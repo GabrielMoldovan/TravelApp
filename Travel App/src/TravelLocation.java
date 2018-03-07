@@ -2,7 +2,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class TravelLocation {
+public class TravelLocation implements Comparable<TravelLocation> {
 
 	String name, country, region, city;
 	int pricePerDay, numberOfActivities;
@@ -106,6 +106,14 @@ public class TravelLocation {
 
 	public void setActivities(ArrayList<String> activities) {
 		this.activities = activities;
+	}
+
+	
+
+	@Override
+	public int compareTo(TravelLocation o) {
+		// TODO Auto-generated method stub
+		return this.getPricePerDay() - o.getPricePerDay();
 	}
 
 }

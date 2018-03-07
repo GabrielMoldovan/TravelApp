@@ -6,9 +6,7 @@ import java.util.Scanner;
 
 public class DataReader {
 
-
-
-	public static Calendar readDate(String[] date) {
+	public Calendar readDate(String[] date) {
 		Calendar calendarDate = Calendar.getInstance();
 		calendarDate.set(Integer.parseInt(date[2]), Integer.parseInt(date[1]) - 1, Integer.parseInt(date[0]));
 		return calendarDate;
@@ -21,8 +19,8 @@ public class DataReader {
 		ArrayList<Country> countries = new ArrayList<Country>();
 
 		for (int i = 0; i < numberOfLocations; i++) {
-
 			String[] dates = s.nextLine().split(" ");
+
 			int numberOfActivities = Integer.parseInt(s.nextLine());
 			String[] activityList = s.nextLine().split(" ");
 
@@ -32,8 +30,8 @@ public class DataReader {
 
 			}
 
-			String[] beginDate = s.next().split("/");
-			String[] stopDate = s.next().split("/");
+			String[] beginDate = s.nextLine().split("/");
+			String[] stopDate = s.nextLine().split("/");
 			Calendar startDate = readDate(beginDate);
 			Calendar endDate = readDate(stopDate);
 
