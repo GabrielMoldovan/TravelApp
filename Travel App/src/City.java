@@ -22,4 +22,15 @@ public class City {
 	public void setLocations(ArrayList<TravelLocation> locations) {
 		this.locations = locations;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		return this.getName().equals(((City)obj).getName());
+	}
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return this.getName().hashCode();
+	}
 }

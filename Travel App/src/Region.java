@@ -28,4 +28,15 @@ public class Region {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		return this.getName().equals(((Region)obj).getName());
+	}
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return this.getName().hashCode();
+	}
 }

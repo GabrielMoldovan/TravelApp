@@ -27,4 +27,15 @@ public class Country {
 	public void setRegions(ArrayList<Region> regions) {
 		this.regions = regions;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		return this.getName().equals(((Country)obj).getName());
+	}
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return this.getName().hashCode();
+	}
 }
