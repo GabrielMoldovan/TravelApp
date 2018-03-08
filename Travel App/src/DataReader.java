@@ -42,11 +42,11 @@ public class DataReader {
 			Region region = new Region(city, dates[2]);
 			Country country = new Country(region, dates[1]);
 			int countryIndex = countries.indexOf(country);
-			if (countryIndex > 0) {
-				int regionIndex = countries.get(countryIndex).getRegions().indexOf(region);
-				if (regionIndex > 0) {
-					int cityIndex = countries.get(countryIndex).getRegions().get(regionIndex).getCities().indexOf(city);
-					if (cityIndex > 0) {
+			if (countries.contains(country)) {
+				if (countries.get(countryIndex).getRegions().contains(region)) {
+					int regionIndex = countries.get(countryIndex).getRegions().indexOf(region);
+					if (countries.get(countryIndex).getRegions().get(regionIndex).getCities().contains(city)) {
+						int cityIndex = countries.get(countryIndex).getRegions().get(regionIndex).getCities().indexOf(city);
 						countries.get(countryIndex).getRegions().get(regionIndex).getCities().get(cityIndex)
 								.getLocations().add(location);
 					} else {
