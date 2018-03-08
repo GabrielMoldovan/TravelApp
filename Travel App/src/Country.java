@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+
+//structura unei tari
 public class Country {
 	ArrayList<Region> regions;
 	String name;

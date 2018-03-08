@@ -17,7 +17,7 @@ public class DataReader {
 		Scanner s = new Scanner(new FileInputStream(inputFile));
 		int numberOfLocations = Integer.parseInt(s.nextLine());
 		ArrayList<Country> countries = new ArrayList<Country>();
-
+		//Citeste fiecare locatie din fisier
 		for (int i = 0; i < numberOfLocations; i++) {
 			String[] dates = s.nextLine().split(" ");
 
@@ -34,33 +34,16 @@ public class DataReader {
 			String[] stopDate = s.nextLine().split("/");
 			Calendar startDate = readDate(beginDate);
 			Calendar endDate = readDate(stopDate);
-
+			//dates == {"Nume locatie", "Tara", "Regiune", "Oras", "Pret mediu pe zi"}
 			TravelLocation location = new TravelLocation(dates[0], dates[1], dates[2], dates[3],
 					Integer.parseInt(dates[4]), numberOfActivities, activities, startDate, endDate);
 
 			City newCity = new City(location, dates[3]);
 			Region newRegion = new Region(newCity, dates[2]);
 			Country newCountry = new Country(newRegion, dates[1]);
-			// if (countries.contains(country)) {
-			// int countryIndex = countries.indexOf(country);
-			// if (countries.get(countryIndex).getRegions().contains(region)) {
-			// int regionIndex = countries.get(countryIndex).getRegions().indexOf(region);
-			// if
-			// (countries.get(countryIndex).getRegions().get(regionIndex).getCities().contains(city))
-			// {
-			// int cityIndex =
-			// countries.get(countryIndex).getRegions().get(regionIndex).getCities().indexOf(city);
-			// countries.get(countryIndex).getRegions().get(regionIndex).getCities().get(cityIndex)
-			// .getLocations().add(location);
-			// } else {
-			// countries.get(countryIndex).getRegions().get(regionIndex).getCities().add(city);
-			// }
-			// } else {
-			// countries.get(countryIndex).getRegions().add(region);
-			// }
-			// } else {
-			// countries.add(country);
-			// }
+			//Introducerea locatiei in ierarhie
+			//Itereaza prin structura ierarhica, daca exista tara / regiune / oras cu acest nume
+			//introducem locatia la locul potrivit, daca nu, creem o noua tara / regiune / oras
 			int countryFlag = 0;
 			for (Country country : countries) {
 				if (country.equals(newCountry)) {
@@ -70,7 +53,7 @@ public class DataReader {
 						if (region.equals(newRegion)) {
 							regionFlag = 1;
 							int cityFlag = 0;
-							if(!(region.getCities().isEmpty())) {
+							if (!(region.getCities().isEmpty())) {
 								for (City city : region.getCities()) {
 									if (city.equals(newCity)) {
 										cityFlag = 1;

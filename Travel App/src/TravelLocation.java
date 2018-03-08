@@ -2,6 +2,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+//Locatiile pentru petrecerea vacantei:
 public class TravelLocation implements Comparable<TravelLocation> {
 
 	String name, country, region, city;
@@ -24,7 +25,7 @@ public class TravelLocation implements Comparable<TravelLocation> {
 
 	}
 
-	//
+	//Afiseaza informatiile locatiei
 	public void printInfo() {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 		System.out.println();

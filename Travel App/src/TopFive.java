@@ -10,8 +10,11 @@ public class TopFive {
 		// TODO Auto-generated constructor stub
 	}
 
+	
 	public static void topFiveCountry(String name, Calendar startDate, Calendar endDate, ArrayList<Country> countries) {
 		ArrayList<TravelLocation> locations = new ArrayList<TravelLocation>();
+		//itereaza prin structura ierarhica si construieste o noua lista cu locatiile din tara specificata ce au
+		//perioada de valabilitate valida pentru perioada in care utilizatorul doreste sa calatoreasca
 		for (Country country : countries) {
 			if (country.getName().equals(name)) {
 				for (Region region : country.getRegions()) {
@@ -34,6 +37,7 @@ public class TopFive {
 			System.out.println("-----------");
 			return;
 		}
+		//sorteaza locatiile in functie de pret mediu pe zi
 		Collections.sort(locations);
 		for (int i = 0; i < 5 && i < locations.size(); i++) {
 			System.out.println();
@@ -43,6 +47,8 @@ public class TopFive {
 		}
 	}
 
+	//Afiseaza top 5 locatii, in functie de tara/regiune/oras, deschise intr-o anumita
+	//perioada specificata de utilizator
 	public void topFive(DataReader reader, ArrayList<Country> countries, Scanner scan) {
 		String name;
 		System.out.println();
@@ -80,6 +86,8 @@ public class TopFive {
 
 	public static void topFiveRegion(String name, Calendar startDate, Calendar endDate, ArrayList<Country> countries) {
 		ArrayList<TravelLocation> locations = new ArrayList<TravelLocation>();
+		//itereaza prin structura ierarhica si construieste o noua lista cu locatiile din regiunea specificata ce au
+		//perioada de valabilitate valida pentru perioada in care utilizatorul doreste sa calatoreasca
 		for (Country country : countries) {
 			for (Region region : country.getRegions()) {
 				if (region.getName().equals(name)) {
@@ -102,6 +110,7 @@ public class TopFive {
 			System.out.println("-----------");
 			return;
 		}
+		//sorteaza locatiile dupa pret mediu pe zi
 		Collections.sort(locations);
 		for (int i = 0; i < 5 && i < locations.size(); i++) {
 			System.out.println();
@@ -113,6 +122,8 @@ public class TopFive {
 
 	public static void topFiveCity(String name, Calendar startDate, Calendar endDate, ArrayList<Country> countries) {
 		ArrayList<TravelLocation> locations = new ArrayList<TravelLocation>();
+		//itereaza prin structura ierarhica si construieste o noua lista cu locatiile din orasul specificat ce au
+		//perioada de valabilitate valida pentru perioada in care utilizatorul doreste sa calatoreasca
 		for (Country country : countries) {
 			for (Region region : country.getRegions()) {
 				for (City city : region.getCities()) {
@@ -135,6 +146,7 @@ public class TopFive {
 			System.out.println("-----------");
 			return;
 		}
+		//sorteaza locatiile dupa pret mediu pe zi
 		Collections.sort(locations);
 		for (int i = 0; i < 5 && i < locations.size(); i++) {
 			System.out.println();

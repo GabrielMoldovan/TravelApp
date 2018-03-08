@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+
+//structura unui oras
 public class City {
 	ArrayList<TravelLocation> locations;
 	String name;
@@ -27,7 +29,6 @@ public class City {
 	@Override
 	public boolean equals(Object obj) {
 		// TODO Auto-generated method stub
-		System.out.println("----->>>" + this.getName() + "     " + ((City)obj).getName());
 		return this.getName().equals(((City)obj).getName());
 	}
 	@Override

@@ -8,6 +8,7 @@ public class LocationDetails {
 	}
 	
 	public static TravelLocation searchByName(String name, ArrayList<Country> countries) {
+		//itereaza prin structura ierarhica si returneaza locatia cu numele specificat
 		for (Country country : countries) {
 			for (Region region : country.getRegions()) {
 				for (City city : region.getCities()) {
@@ -23,7 +24,7 @@ public class LocationDetails {
 		return null;
 
 	}
-	
+	//afiseaza detalii despre o anumita locatie
 	public void getDetails(ArrayList<Country> countries, Scanner scan) {
 		System.out.println("Please enter a location name:");
 		String name = scan.next();
