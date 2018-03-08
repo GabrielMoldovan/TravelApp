@@ -14,6 +14,7 @@ public class City {
 		ArrayList<TravelLocation> locations = new ArrayList<TravelLocation>();
 		locations.add(location);
 		setLocations(locations);
+		setName(name);
 		
 	}
 	public ArrayList<TravelLocation> getLocations() {
@@ -26,6 +27,7 @@ public class City {
 	@Override
 	public boolean equals(Object obj) {
 		// TODO Auto-generated method stub
+		System.out.println("----->>>" + this.getName() + "     " + ((City)obj).getName());
 		return this.getName().equals(((City)obj).getName());
 	}
 	@Override

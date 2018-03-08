@@ -38,25 +38,58 @@ public class DataReader {
 			TravelLocation location = new TravelLocation(dates[0], dates[1], dates[2], dates[3],
 					Integer.parseInt(dates[4]), numberOfActivities, activities, startDate, endDate);
 
-			City city = new City(location, dates[3]);
-			Region region = new Region(city, dates[2]);
-			Country country = new Country(region, dates[1]);
-			int countryIndex = countries.indexOf(country);
-			if (countries.contains(country)) {
-				if (countries.get(countryIndex).getRegions().contains(region)) {
-					int regionIndex = countries.get(countryIndex).getRegions().indexOf(region);
-					if (countries.get(countryIndex).getRegions().get(regionIndex).getCities().contains(city)) {
-						int cityIndex = countries.get(countryIndex).getRegions().get(regionIndex).getCities().indexOf(city);
-						countries.get(countryIndex).getRegions().get(regionIndex).getCities().get(cityIndex)
-								.getLocations().add(location);
-					} else {
-						countries.get(countryIndex).getRegions().get(regionIndex).getCities().add(city);
+			City newCity = new City(location, dates[3]);
+			Region newRegion = new Region(newCity, dates[2]);
+			Country newCountry = new Country(newRegion, dates[1]);
+			// if (countries.contains(country)) {
+			// int countryIndex = countries.indexOf(country);
+			// if (countries.get(countryIndex).getRegions().contains(region)) {
+			// int regionIndex = countries.get(countryIndex).getRegions().indexOf(region);
+			// if
+			// (countries.get(countryIndex).getRegions().get(regionIndex).getCities().contains(city))
+			// {
+			// int cityIndex =
+			// countries.get(countryIndex).getRegions().get(regionIndex).getCities().indexOf(city);
+			// countries.get(countryIndex).getRegions().get(regionIndex).getCities().get(cityIndex)
+			// .getLocations().add(location);
+			// } else {
+			// countries.get(countryIndex).getRegions().get(regionIndex).getCities().add(city);
+			// }
+			// } else {
+			// countries.get(countryIndex).getRegions().add(region);
+			// }
+			// } else {
+			// countries.add(country);
+			// }
+			int countryFlag = 0;
+			for (Country country : countries) {
+				if (country.equals(newCountry)) {
+					countryFlag = 1;
+					int regionFlag = 0;
+					for (Region region : country.getRegions()) {
+						if (region.equals(newRegion)) {
+							regionFlag = 1;
+							int cityFlag = 0;
+							if(!(region.getCities().isEmpty())) {
+								for (City city : region.getCities()) {
+									if (city.equals(newCity)) {
+										cityFlag = 1;
+										city.getLocations().add(location);
+									}
+								}
+							}
+							if (cityFlag == 0) {
+								region.getCities().add(newCity);
+							}
+						}
 					}
-				} else {
-					countries.get(countryIndex).getRegions().add(region);
+					if (regionFlag == 0) {
+						country.getRegions().add(newRegion);
+					}
 				}
-			} else {
-				countries.add(country);
+			}
+			if (countryFlag == 0) {
+				countries.add(newCountry);
 			}
 
 		}

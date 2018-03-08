@@ -30,6 +30,7 @@ public class TravelLocation implements Comparable<TravelLocation> {
 		System.out.println();
 		System.out.println("Location name: " + getName());
 		System.out.println("Located in " + getCountry() + ", " + getRegion() + ", " + getCity());
+		System.out.println("Medium price per day: " + getPricePerDay());
 		System.out.println("Activity list: " + getActivities());
 		System.out.println("Available from " + sdf.format(getStartDate().getTime()) + " to " + sdf.format(getEndDate().getTime()));
 		System.out.println();
